@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
@@ -11,16 +11,17 @@ function App() {
       content: '',
       isCompleted: false,
     },
-    // {
-    //   content: 'Get haircut',
-    //   isCompleted: false,
-    // },
-    // {
-    //   content: 'Build a todo app in React',
-    //   isCompleted: false,
-    // }
-
   ]); //the initial state value is set, now use the todos in the return statement
+
+  useEffect(() => {
+    if (localStorage.getItem("toStoreData")){
+      setTodos(JSON.parse(localStorage.getItem("toStoreData")))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("toStoreData", JSON.stringify(todos))
+  }, [todos])
 
   function handleKeyDown(e, i) { // check if enter is pressed, if enter is pressed go to createTodoAtIndex function
     if (e.key === 'Enter') {
@@ -76,6 +77,7 @@ function App() {
               {todo.isCompleted && (<span>&#x2714;</span>)}
               </div>
               <input 
+                placeholder='add a todo'
                 type="text" 
                 value={todo.content} 
                 onKeyDown={e => handleKeyDown(e, i)} //calls function and passes the input's event and the index of the current todo
