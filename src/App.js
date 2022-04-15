@@ -2,34 +2,31 @@ import React, { useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 
-
-
 function App() {
   //initialize a new state property called todos: 
     //Hooks have to be initialized inside of the body of a React Component. You can’t initialize them outside of the body or inside of a function.
     //todos is the state value itself, and setTodos is the function that updates the state value
     const [todos, setTodos] = useState([
     {
-      content: 'Pickup dry cleaning',
-      isCompleted: true,
-    },
-    {
-      content: 'Get haircut',
+      content: '',
       isCompleted: false,
     },
-    {
-      content: 'Build a todo app in React',
-      isCompleted: false,
-    }
+    // {
+    //   content: 'Get haircut',
+    //   isCompleted: false,
+    // },
+    // {
+    //   content: 'Build a todo app in React',
+    //   isCompleted: false,
+    // }
 
   ]); //the initial state value is set, now use the todos in the return statement
 
   function handleKeyDown(e, i) { // check if enter is pressed, if enter is pressed go to createTodoAtIndex function
     if (e.key === 'Enter') {
-      createTodoAtIndex(e, i);
+      return createTodoAtIndex(e, i);
     }
-    if (e.key === 'Backspace' && todos[i].content === '')
-      e.preventDefault();
+    else if (e.key === 'Backspace' && todos[i].content === '')
       return removeTodoAtIndex(i);
   }
 
