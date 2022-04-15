@@ -66,6 +66,9 @@ function App() {
   return (
     <div className="app">
       <div className="header">
+        <h1>Use enter in a todo to create empty field under it</h1>
+        <h1>directly edit, copy, paste or delete in the todo</h1>
+        <h1>Check mark the todo if completed</h1>
         {/* <img src={logo} className="logo" alt="logo" /> */}
       </div>
       <form className="todo-list">
