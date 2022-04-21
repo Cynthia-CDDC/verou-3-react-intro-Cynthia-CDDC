@@ -8,7 +8,7 @@ export default function TodoList(props) {
         console.log(`${value} is ${checked}`);
         const checkedTodos = props.todos.map((todo) => {console.log(value); console.log(todo.id);
             if (value == todo.id) {
-                return {id: todo.id, content: todo.content, checked: true};
+                return {id: todo.id, content: todo.content, checked: checked};
             }
             return todo;
         });
@@ -19,7 +19,7 @@ export default function TodoList(props) {
         <ul>
         {props.todos.map((todo) => (
             <li key={todo.id}>
-                <input value={todo.id} type="checkbox" name="checked" onChange={handleChange}/> {todo.content}
+                <input value={todo.id} checked={todo.checked} type="checkbox" name="checked" onChange={handleChange}/> {todo.content}
             </li>
         ))}
         </ul>
