@@ -1,11 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Form from './Form';
 import TodoList from './TodoList';
 
-function App() {
+const LSKEY = "MyTodoApp";
 
-  const [todos, setTodos] = useState([]);
+function App() {
+  
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem(LSKEY + ".storagetodos")) || []);
+
+  useEffect(() => {
+    if (localStorage.getItem(LSKEY + ".storagetodos"))
+    {
+      setTodos(JSON.parse(localStorage.getItem(LSKEY + ".storagetodos")))
+    }
+  },[]);
+
+  useEffect(() => {
+    localStorage.setItem(LSKEY + ".storagetodos", JSON.stringify(todos))
+  },[todos]);
 
   return (
     <div className="App">

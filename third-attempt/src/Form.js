@@ -1,11 +1,11 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef} from "react";
 import TodoList from "./TodoList";
 
 export default function Form(props) {
 
     const inputRef = useRef();
 
-    function clickHandler() {
+    function clickHandler(e) {
       const inputElement = inputRef.current;
       props.setTodos([...props.todos, {id: props.todos.length + 1, content: inputElement.value, checked: false}]);
     }
