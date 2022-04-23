@@ -7,7 +7,7 @@ export default function Form(props) {
 
     function clickHandler(e) {
       const inputElement = inputRef.current;
-      props.setTodos([...props.todos, {id: props.todos.length + 1, content: inputElement.value, checked: false}]);
+      props.setTodos([...props.todos, {id: props.todos.length + 1, content: inputElement.value, checked: false, toUpdate: false}]);
     }
 
   return (
